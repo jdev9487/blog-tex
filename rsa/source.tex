@@ -1,0 +1,36 @@
+\documentclass{amsart}
+
+\newtheorem{theorem}{Theorem}
+
+\begin{document}
+\author{John Gould}
+\title{A deep dive into RSA}
+\maketitle
+
+\section[intro]{Introduction}
+
+RSA (Ron Rivest, Adi Shamir and Leonard Adleman) is an example of a public-key encryption algorithm. In essence, this means that encryption and decryption of messages is done with a key pair. One key, the public key (PK), is known to everyone. The other key, the secret key (SK), is kept private. It can help to think of people sending message to one another that they wish to be unreadable to everyone but their intended recipient. Whilst it is not necessarily people that actually send messages it serves as a useful analogy.
+
+\subsection[mot]{Motivation}
+
+So what is the goal behind public-key encryption? Three people communicating over the internet will be introduced to help illustrate this: Alice, Bob and Charlie. Alice wishes to send a message to Bob that she does not wish Charlie to know the contents of. Alice and Bob could devise their own secret code that would allow them to encrypt and decrypt messages to one another but this comes with some complications:
+\begin{enumerate}
+    \item Alice and Bob should meet in-person if they want to set up their secret code. Otherwise, Charlie could listen in during its construction.
+    \item Alice may well want to open lines of secure communication with other internet users. Devising new rules for each line clearly poses problems.
+\end{enumerate}
+RSA (public-key encryption in general) solves these problems by assigning everyone a key pair. These keys have the property that encryption using one \textit{only} allows decryption with the other. For reasons that will become clear, one of these keys, let's call it the secret-key, remains absolutely private. The other key is accessible to anyone and everyone who wishes to see - this is the public-key. But why does such a key-pair solve any problems?
+
+\subsubsection[secrecy]{Secrecy}
+Let's return to our example; Alice wishes to send a message to Bob that Charlie (or anyone else for that matter) cannot read. The key feature of these key pairs is that if one key is used for encryption, only the other can be used to decrypt it. This makes Alice's job simple: encrypt her message with Bob's \textit{public-key}. Like anyone, Alice has access to Bob's public-key so this is perfectly doable. The message can now \textit{only} be decrypted with the corresponding key in the pair; this is Bob's secret-key. Since only Bob has access to his secret-key, the secrecy of the message has been upheld.
+
+\subsubsection[ident]{Identification}
+Suppose Bob receives a message from Alice. How can he be sure she sent it? This is where Alice's secret-key comes into it. After encrypting her message to Bob, she appends a `signature' that is encrypted with her secret-key. If Bob wants to be sure that Alice sent the message, all he should do is decrypt it with Alice's public key.
+
+\section[enc/dec]{Encryption and decryption}
+\subsection[proc]{Procedure}
+RSA follows these steps to create public and secret keys:
+\begin{enumerate}
+    \item 
+\end{enumerate}
+
+\end{document}
